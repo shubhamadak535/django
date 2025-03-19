@@ -68,6 +68,13 @@
     </style>
 </head>
 <body>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Add to Cart">
+        </form>
+    </div>
     <div class="container">
         {% for pro in prod %}
             <div class="product-card">
@@ -78,5 +85,6 @@
             </div>
         {% endfor %}
     </div>
+
 </body>
 </html>
