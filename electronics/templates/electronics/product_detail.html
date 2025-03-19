@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
+        }
+        .product-card {
+            background: linear-gradient(135deg, #ffffff, #e3f2fd);
+            border: 3px solid #2196F3;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .product-card h3 {
+            margin: 0 0 10px;
+            color: #1E88E5;
+            font-size: 1.5rem;
+        }
+        .product-card .price {
+            color: #4CAF50;
+            font-weight: bold;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        .product-card p {
+            color: #616161;
+            font-size: 1rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #1E88E5;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #1565C0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% for pro in prod %}
+            <div class="product-card">
+                <h3>{{ pro.name }}</h3>
+                <p class="price">${{ pro.price }}</p>
+                <p>{{ pro.description }}</p>
+                <a href="/buy/{{ pro.id }}" class="btn">Buy Now</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
